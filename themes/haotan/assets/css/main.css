@@ -162,6 +162,7 @@ strong {
   z-index: 1000;
   height: calc(var(--nav-h) + env(safe-area-inset-top, 0px));
   padding-top: env(safe-area-inset-top, 0px);
+  background: var(--c-bg-hero);
   transition: background 0.3s var(--ease), box-shadow 0.3s var(--ease), backdrop-filter 0.3s var(--ease);
 }
 
@@ -1155,12 +1156,14 @@ strong {
     gap: 1.25rem;
     border-bottom: 1px solid var(--c-border);
     transform: translateY(-110%);
-    transition: transform 0.3s var(--ease);
+    visibility: hidden;
+    transition: transform 0.3s var(--ease), visibility 0.3s;
     z-index: 999;
   }
 
   .nav__links.active {
     transform: translateY(0);
+    visibility: visible;
   }
 
   .nav__links a {

@@ -12,6 +12,10 @@
         content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
     <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
     <meta property="og:url" content="{{ .Permalink }}">
+    <meta property="og:image" content="{{ .Site.Params.profileImage | absURL }}">
+
+    <!-- Theme color -->
+    <meta name="theme-color" content="#2C2825">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

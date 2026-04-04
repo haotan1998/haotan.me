@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog on Hao Tan</title>
-    <link>http://localhost:1313/blog/</link>
+    <link>https://haotan.me/blog/</link>
     <description>Recent content in Blog on Hao Tan</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://haotan.me/blog/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

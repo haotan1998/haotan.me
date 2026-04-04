@@ -45,7 +45,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -128,6 +127,17 @@ strong {
 }
 
 .btn--outline:hover {
+  border-color: var(--c-accent);
+  color: var(--c-accent);
+}
+
+.btn--outline-dark {
+  background: transparent;
+  color: var(--c-text);
+  border-color: var(--c-border);
+}
+
+.btn--outline-dark:hover {
   border-color: var(--c-accent);
   color: var(--c-accent);
 }

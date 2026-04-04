@@ -5,78 +5,29 @@
             <h2 class="section__title">Publications &amp; Patents</h2>
         </div>
 
-        <!-- Journals -->
+        {{ range .Site.Data.publications }}
         <div class="pub-group">
-            <h3 class="pub-group__title">Journal Articles</h3>
+            <h3 class="pub-group__title">{{ .group }}</h3>
 
+            {{ range .entries }}
             <article class="pub">
                 <div class="pub__accent"></div>
                 <div class="pub__body">
-                    <h4 class="pub__title">RelativeNAS: Relative Neural Architecture Search via Slow-Fast Learning</h4>
-                    <p class="pub__authors"><strong>Hao Tan</strong>, Ran Cheng, Shihua Huang, Cheng He, Changxiao Qiu,
-                        Fan Yang, Ping Luo</p>
-                    <p class="pub__venue"><em>IEEE Transactions on Neural Networks and Learning Systems (TNNLS)</em>,
-                        2021</p>
+                    <h4 class="pub__title">{{ .title }}</h4>
+                    <p class="pub__authors">{{ .authors | safeHTML }}</p>
+                    <p class="pub__venue">{{ .venue | safeHTML }}</p>
+                    {{ with .badge }}<span class="pub__badge">{{ . }}</span>{{ end }}
+                    {{ with .links }}
                     <div class="pub__links">
-                        <a href="https://arxiv.org/abs/2009.06193" target="_blank" rel="noopener">Paper ↗</a>
-                        <a href="https://github.com/EMI-Group/RelativeNAS" target="_blank" rel="noopener">Code ↗</a>
+                        {{ range . }}
+                        <a href="{{ .url }}" target="_blank" rel="noopener">{{ .label }}</a>
+                        {{ end }}
                     </div>
+                    {{ end }}
                 </div>
             </article>
-
-            <article class="pub">
-                <div class="pub__accent"></div>
-                <div class="pub__body">
-                    <h4 class="pub__title">Efficient Evolutionary Neural Architecture Search by Modular Inheritable
-                        Crossover</h4>
-                    <p class="pub__authors">Cheng He, <strong>Hao Tan</strong>, Shihua Huang, Ran Cheng</p>
-                    <p class="pub__venue"><em>Swarm and Evolutionary Computation (SWEVO)</em>, 2021</p>
-                    <div class="pub__links">
-                        <a href="https://www.sciencedirect.com/science/article/pii/S2210650221000559" target="_blank"
-                            rel="noopener">Paper ↗</a>
-                    </div>
-                </div>
-            </article>
+            {{ end }}
         </div>
-
-        <!-- Conferences -->
-        <div class="pub-group">
-            <h3 class="pub-group__title">Conference Papers</h3>
-
-            <article class="pub">
-                <div class="pub__accent"></div>
-                <div class="pub__body">
-                    <h4 class="pub__title">Efficient Evolutionary Neural Architecture Search by Modular Inheritable
-                        Crossover</h4>
-                    <p class="pub__authors"><strong>Hao Tan</strong>, Cheng He, Dexuan Tang, Ran Cheng</p>
-                    <p class="pub__venue"><em>International Conference on Bio-inspired Computing: Theories and
-                            Applications (BIC-TA)</em>, 2019</p>
-                    <span class="pub__badge">🏆 Best Paper Award</span>
-                    <div class="pub__links">
-                        <a href="https://link.springer.com/chapter/10.1007/978-981-15-3425-6_61" target="_blank"
-                            rel="noopener">Paper ↗</a>
-                    </div>
-                </div>
-            </article>
-        </div>
-
-        <!-- Patents -->
-        <div class="pub-group">
-            <h3 class="pub-group__title">Patents</h3>
-
-            <article class="pub">
-                <div class="pub__accent"></div>
-                <div class="pub__body">
-                    <h4 class="pub__title">A Neural Architecture Search Method and System based on Evolutionary Learning
-                    </h4>
-                    <p class="pub__authors">Ran Cheng, Hao Tan, Cheng He, Zhanglu Hou, Changxiao Qiu</p>
-                    <p class="pub__venue"><em>International Patent</em>, PCT/CN2020/136950, filed June 23, 2022</p>
-                    <div class="pub__links">
-                        <a href="https://patents.google.com/patent/WO2022126448A1/" target="_blank"
-                            rel="noopener">Patent ↗</a>
-                    </div>
-                </div>
-            </article>
-        </div>
+        {{ end }}
     </div>
 </section>

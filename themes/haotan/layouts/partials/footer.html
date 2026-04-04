@@ -23,62 +23,24 @@
                         <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                     </svg>
                 </a>
-            </div>
+                <a href="{{ .Site.Params.googleScholar }}" target="_blank" rel="noopener"
+                    aria-label="Google Scholar">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z" />
+                    </svg>
+                </a>
+                <a href="https://orcid.org/{{ .Site.Params.orcid }}" target="_blank" rel="noopener"
+                    aria-label="ORCID">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-1.481-.844-3.722-3.919-3.722h-2.4z" />
+                    </svg>
+                </a>
         </div>
     </div>
 </footer>
 
-<!-- Scroll animation script -->
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // Navbar scroll effect
-        const nav = document.getElementById('nav');
-        window.addEventListener('scroll', () => {
-            nav.classList.toggle('nav--scrolled', window.scrollY > 60);
-        });
 
-        // Mobile toggle
-        const toggle = document.getElementById('navToggle');
-        const links = document.getElementById('navLinks');
-        if (toggle && links) {
-            toggle.addEventListener('click', () => {
-                toggle.classList.toggle('active');
-                links.classList.toggle('active');
-            });
-            links.querySelectorAll('a').forEach(a => {
-                a.addEventListener('click', () => {
-                    toggle.classList.remove('active');
-                    links.classList.remove('active');
-                });
-            });
-        }
-
-        // Scroll reveal
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-        document.querySelectorAll('.section__header, .about__grid, .timeline__item, .pub, .award, .contact__card, .contact__lead').forEach(el => {
-            el.classList.add('reveal');
-            observer.observe(el);
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', e => {
-                e.preventDefault();
-                const target = document.querySelector(a.getAttribute('href'));
-                if (target) {
-                    const navHeight = nav.offsetHeight;
-                    const y = target.getBoundingClientRect().top + window.scrollY - navHeight;
-                    window.scrollTo({ top: y, behavior: 'smooth' });
-                }
-            });
-        });
-    });
-</script>
+{{ $js := resources.Get "js/main.js" | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>

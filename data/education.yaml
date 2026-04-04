@@ -1,0 +1,13 @@
+- date: "Oct 2021 — Jul 2026 (Expected)"
+  institution: "University of Leeds"
+  degree: "Doctor of Philosophy — Computer Science"
+  description: |
+    PhD programme under the supervision of
+    {{supervisors}}.
+    <em>Thesis: Fusion Strategies for Cascading, Merging, and Multi-Tasking Deep Models</em>
+
+- date: "Sep 2016 — Jun 2020"
+  institution: "Southern University of Science and Technology"
+  degree: "B.Eng. — Computer Science and Technology"
+  description: |
+    <em>Thesis: Neural Architecture Search Based on Differential Evolution</em>

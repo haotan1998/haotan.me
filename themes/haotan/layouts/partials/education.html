@@ -5,33 +5,29 @@
             <h2 class="section__title">Education</h2>
         </div>
         <div class="timeline">
+            {{ range .Site.Data.education }}
             <div class="timeline__item">
                 <div class="timeline__marker"></div>
                 <div class="timeline__content">
-                    <span class="timeline__date">Oct 2021 — Jul 2026 (Expected)</span>
-                    <h3 class="timeline__heading">University of Leeds</h3>
-                    <p class="timeline__sub">Doctor of Philosophy — Computer Science</p>
+                    <span class="timeline__date">{{ .date }}</span>
+                    <h3 class="timeline__heading">{{ .institution }}</h3>
+                    <p class="timeline__sub">{{ .degree }}</p>
+                    {{ with .description }}
                     <p class="timeline__desc">
-                        PhD programme under the supervision of
-                        <a href="https://business.leeds.ac.uk/faculty/staff/1025/dr-nabi-omidvar" target="_blank"
-                            rel="noopener">Dr. Nabi Omidvar</a> and
-                        <a href="https://eps.leeds.ac.uk/computing/staff/301/professor-netta-cohen" target="_blank"
-                            rel="noopener">Prof. Netta Cohen</a>.<br>
-                        <em>Thesis: Fusion Strategies for Cascading, Merging, and Multi-Tasking Deep Models</em>
+                        {{ $desc := . }}
+                        {{ if strings.Contains $desc "{{supervisors}}" }}
+                            {{ $supervisorLinks := slice }}
+                            {{ range $.Site.Data.supervisors }}
+                                {{ $supervisorLinks = $supervisorLinks | append (printf `<a href="%s" target="_blank" rel="noopener">%s</a>` .url .name) }}
+                            {{ end }}
+                            {{ $desc = replace $desc "{{supervisors}}" (delimit $supervisorLinks " and ") }}
+                        {{ end }}
+                        {{ $desc | safeHTML }}
                     </p>
+                    {{ end }}
                 </div>
             </div>
-            <div class="timeline__item">
-                <div class="timeline__marker"></div>
-                <div class="timeline__content">
-                    <span class="timeline__date">Sep 2016 — Jun 2020</span>
-                    <h3 class="timeline__heading">Southern University of Science and Technology</h3>
-                    <p class="timeline__sub">B.Eng. — Computer Science and Technology</p>
-                    <p class="timeline__desc">
-                        <em>Thesis: Neural Architecture Search Based on Differential Evolution</em>
-                    </p>
-                </div>
-            </div>
+            {{ end }}
         </div>
     </div>
 </section>

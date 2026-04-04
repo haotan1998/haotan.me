@@ -2,6 +2,11 @@ baseURL = "https://haotan.me/"
 languageCode = "en-us"
 title = "Hao Tan"
 theme = "haotan"
+enableRobotsTXT = true
+
+[sitemap]
+  changefreq = "monthly"
+  priority = 0.5
 
 [pagination]
   pagerSize = 10
@@ -53,7 +58,4 @@ theme = "haotan"
   url = "/blog/"
   weight = 6
 
-[[menus.main]]
-  name = "Contact"
-  url = "#contact"
-  weight = 7
+

@@ -17,10 +17,8 @@
                     <div class="about__detail">
                         <span class="about__detail-label">Supervisors</span>
                         <span class="about__detail-value">
-                            <a href="https://business.leeds.ac.uk/faculty/staff/1025/dr-nabi-omidvar" target="_blank"
-                                rel="noopener">Dr. Nabi Omidvar</a> &amp;
-                            <a href="https://eps.leeds.ac.uk/computing/staff/301/professor-netta-cohen" target="_blank"
-                                rel="noopener">Prof. Netta Cohen</a>
+                            {{ $supervisors := .Site.Data.supervisors }}
+                            {{ range $i, $s := $supervisors }}{{ if $i }} &amp; {{ end }}<a href="{{ $s.url }}" target="_blank" rel="noopener">{{ $s.name }}</a>{{ end }}
                         </span>
                     </div>
                     <div class="about__detail">

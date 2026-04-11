@@ -1,13 +1,18 @@
-- date: "Oct 2021 — Jul 2026 (Expected)"
-  institution: "University of Leeds"
-  degree: "Doctor of Philosophy — Computer Science"
-  description: |
-    PhD programme under the supervision of
-    {{supervisors}}.
-    <em>Thesis: Fusion Strategies for Cascading, Merging, and Multi-Tasking Deep Models</em>
+- institution: "University of Leeds"
+  location: "Leeds, UK"
+  degree: "Doctor of Philosophy"
+  field: "Computer Science"
+  period: "Oct 2021 – Jul 2026 (expected)"
+  supervisors:
+    - name: "Dr. Nabi Omidvar"
+      url: "https://business.leeds.ac.uk/faculty/staff/1025/dr-nabi-omidvar"
+    - name: "Prof. Netta Cohen"
+      url: "https://eps.leeds.ac.uk/staff/301/professor_netta_cohen"
+  thesis: "Fusion Strategies for Cascading, Merging, and Multi-Tasking Deep Models"
 
-- date: "Sep 2016 — Jun 2020"
-  institution: "Southern University of Science and Technology"
-  degree: "B.Eng. — Computer Science and Technology"
-  description: |
-    <em>Thesis: Neural Architecture Search Based on Differential Evolution</em>
+- institution: "Southern University of Science and Technology"
+  location: "Shenzhen, China"
+  degree: "Bachelor of Engineering"
+  field: "Computer Science and Technology"
+  period: "Sep 2016 – Jun 2020"
+  thesis: "Neural Architecture Search Based on Differential Evolution"

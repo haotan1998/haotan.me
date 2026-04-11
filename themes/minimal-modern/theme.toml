@@ -1,0 +1,12 @@
+name = "Minimal Modern"
+license = "MIT"
+licenselink = "https://github.com/realhaotan/minimal-modern/blob/main/LICENSE"
+description = "A minimal, modern personal academic website theme"
+homepage = "https://github.com/realhaotan/haotan.me/themes/minimal-modern"
+tags = ["academic", "minimal", "modern", "editorial"]
+features = ["blog"]
+min_version = "0.112.0"
+
+[author]
+  name = "Hao Tan"
+  homepage = "https://haotan.me"

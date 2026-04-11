@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ if .IsHome }}{{ .Site.Params.name }} — {{ .Site.Params.role }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+  <meta name="description" content="{{ .Site.Params.description }}" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ .Site.Params.name }}" />
+  <meta property="og:description" content="{{ .Site.Params.description }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ .Permalink }}" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  {{ $css := resources.Get "css/main.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="/" class="nav__logo">{{ .Site.Params.name }}</a>
+      <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links">
+        {{ range .Site.Params.nav }}
+        <li><a href="{{ .url }}">{{ .label }}</a></li>
+        {{ end }}
+      </ul>
+    </div>
+  </nav>
+  <script>
+    (function () {
+      var toggle = document.querySelector('.nav__toggle');
+      var links = document.querySelector('.nav__links');
+      toggle.addEventListener('click', function () {
+        var open = links.classList.toggle('nav__links--open');
+        toggle.setAttribute('aria-expanded', open);
+      });
+      links.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          links.classList.remove('nav__links--open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+  </script>
+
+  <main>
+    {{ block "main" . }}{{ end }}
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <p class="footer__copy">&copy; {{ now.Year }} {{ .Site.Params.name }}. All rights reserved.</p>
+        <ul class="footer__links">
+          {{ range .Site.Params.social }}
+          <li>
+            <a href="{{ .url }}" {{ if ne .icon "email" }}target="_blank" rel="noopener"{{ end }} aria-label="{{ .name }}">
+              {{ partial "icon.html" (dict "name" .icon "size" 17) }}
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

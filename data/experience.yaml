@@ -1,9 +1,10 @@
-- date: "Jul 2020 — Jul 2021"
-  title: "Research Assistant"
-  organization: "SUSTech — Dept. of Computer Science and Engineering"
-  orgUrl: "http://cse.sustech.edu.cn/en/"
-  description: >
-    Key member responsible for developing neural architecture search algorithms.
-    Collaborated with industry partners to design lightweight neural architectures tailored
-    for microchip hardware constraints. Implemented evolutionary algorithms in PyTorch to
-    automate network architecture optimization, achieving state-of-the-art performance.
+- role: "Research Assistant"
+  organization: "Southern University of Science and Technology"
+  org_url: "https://cse.sustech.edu.cn/en/about/index/"
+  location: "Shenzhen, China"
+  period: "Jul 2020 – Jul 2021"
+  description: "Developed neural architecture search algorithms, collaborated with industry partners on lightweight neural architectures for constrained chip hardware, and implemented evolutionary optimization pipelines in PyTorch."
+  focus:
+    - Neural Architecture Search
+    - Evolutionary Computation
+    - Efficient Deep Learning

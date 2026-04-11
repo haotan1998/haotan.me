@@ -10,13 +10,13 @@
         <p class="hero__subtitle">{{ .Site.Params.department }}</p>
         <p class="hero__tagline">{{ .Site.Params.tagline }}</p>
         <div class="hero__links">
-        {{ range .Site.Params.social }}
-        <a href="{{ .url }}" class="hero__link" {{ if ne .icon "email" }}target="_blank" rel="noopener"{{ end }}>
-          {{ partial "icon.html" (dict "name" .icon) }}
-          {{ .name }}
-        </a>
-        {{ end }}
-      </div>
+          {{ range .Site.Params.social }}
+          <a href="{{ .url }}" class="hero__link" {{ if ne .icon "email" }}target="_blank" rel="noopener" {{ end }}>
+            {{ partial "icon.html" (dict "name" .icon) }}
+            {{ .name }}
+          </a>
+          {{ end }}
+        </div>
       </div>
       <div class="hero__photo">
         <img src="{{ .Site.Params.profilePhoto }}" alt="{{ .Site.Params.name }}" class="hero__portrait" />
@@ -47,15 +47,15 @@
     {{ $typeOrder := slice "journal" "conference" "patent" }}
 
     {{ range $type := $typeOrder }}
-      {{ $items := where $pubs "type" $type }}
-      {{ if $items }}
+    {{ $items := where $pubs "type" $type }}
+    {{ if $items }}
     <h3 class="pub-group__title">{{ index $typeLabels $type }}</h3>
     <div class="publications__list">
       {{ range $items }}
       {{ partial "pub-card.html" . }}
       {{ end }}
     </div>
-      {{ end }}
+    {{ end }}
     {{ end }}
   </div>
 </section>
@@ -70,7 +70,8 @@
         <div class="exp-item__dates">{{ .period }}</div>
         <div class="exp-item__body">
           <h3 class="exp-item__role">{{ .role }}</h3>
-          <p class="exp-item__org"><a href="{{ .org_url }}" target="_blank" rel="noopener">{{ .organization }}</a> · {{ .location }}</p>
+          <p class="exp-item__org"><a href="{{ .org_url }}" target="_blank" rel="noopener">{{ .organization }}</a> · {{
+            .location }}</p>
           <p class="exp-item__desc">{{ .description }}</p>
         </div>
       </div>
@@ -91,7 +92,9 @@
           <p class="edu-item__degree">{{ .degree }}</p>
           <h3 class="edu-item__institution">{{ .institution }}{{ if .location }}, {{ .location }}{{ end }}</h3>
           {{ if .field }}<p class="edu-item__detail"><em>Degree:</em> {{ .field }}</p>{{ end }}
-          {{ if .supervisors }}<p class="edu-item__detail"><em>Supervisors:</em> {{ range $i, $s := .supervisors }}{{ if $i }}, {{ end }}<a href="{{ $s.url }}" target="_blank" rel="noopener">{{ $s.name }}</a>{{ end }}</p>{{ end }}
+          {{ if .supervisors }}<p class="edu-item__detail"><em>Supervisors:</em> {{ range $i, $s := .supervisors }}{{ if
+            $i }}, {{ end }}<a href="{{ $s.url }}" target="_blank" rel="noopener">{{ $s.name }}</a>{{ end }}</p>{{ end
+          }}
           {{ if .thesis }}<p class="edu-item__detail"><em>Thesis:</em> {{ .thesis }}</p>{{ end }}
         </div>
       </div>

@@ -103,11 +103,7 @@
       <div class="cv-group__content">
         <h3 class="cv-entry__title">{{ .degree }}</h3>
         <p class="cv-entry__subtitle">{{ .institution }}{{ if .location }}, {{ .location }}{{ end }}</p>
-        <dl class="cv-details">
-          {{ if .field }}<div class="cv-detail"><dt>Field</dt><dd>{{ .field }}</dd></div>{{ end }}
-          {{ if .supervisors }}<div class="cv-detail"><dt>Supervisors</dt><dd>{{ range $i, $s := .supervisors }}{{ if $i }}, {{ end }}<a href="{{ $s.url }}" target="_blank" rel="noopener">{{ $s.name }}</a>{{ end }}</dd></div>{{ end }}
-          {{ if .thesis }}<div class="cv-detail"><dt>Thesis</dt><dd>{{ .thesis }}</dd></div>{{ end }}
-        </dl>
+        {{ if .description }}<p class="cv-entry__body">{{ .description }}</p>{{ end }}
       </div>
     </div>
     {{ end }}

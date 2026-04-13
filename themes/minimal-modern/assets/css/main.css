@@ -99,12 +99,36 @@ a:hover {
 }
 
 .nav__links a {
+  position: relative;
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--color-text-muted);
   letter-spacing: 0.01em;
   border-bottom: none;
   transition: color 0.2s ease;
+}
+
+.nav__links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.35rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0;
+  transform: scaleX(0.7);
+  transform-origin: center;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.nav__links a[aria-current="true"] {
+  color: var(--color-text);
+}
+
+.nav__links a[aria-current="true"]::after {
+  opacity: 1;
+  transform: scaleX(1);
 }
 
 .nav__links a:hover {
@@ -581,6 +605,26 @@ section+section {
     padding: 0.85rem 2rem;
     font-size: 1rem;
   }
+
+  .nav__links a::after {
+    display: none;
+  }
+
+  .nav__links a[aria-current="true"] {
+    color: var(--color-accent);
+  }
+
+  .nav__links a[aria-current="true"]::before {
+    content: '';
+    position: absolute;
+    left: 1.2rem;
+    top: 50%;
+    width: 2px;
+    height: 1.1rem;
+    background: var(--color-accent);
+    transform: translateY(-50%);
+    border-radius: 999px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -622,7 +666,7 @@ section+section {
   }
 
   .nav__links a {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 
   .hero__links {

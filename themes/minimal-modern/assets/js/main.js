@@ -1,8 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
   var toggle = document.querySelector('.nav__toggle');
   var links = document.querySelector('.nav__links');
+  var navSectionLinks = document.querySelectorAll('.nav__links a[href^="#"]');
   var publicationEntries = document.querySelectorAll('.pub-entry');
   var activePublicationEntry = null;
+
+  bindActiveNavState(navSectionLinks);
 
   if (!toggle || !links) {
     publicationEntries.forEach(function (entry) {
@@ -60,6 +63,74 @@ function bindPublicationEntryState(entry, setActivePublicationEntry) {
       }
     });
   });
+}
+
+function bindActiveNavState(navLinks) {
+  if (!navLinks.length) {
+    return;
+  }
+
+  var sections = [];
+
+  navLinks.forEach(function (link) {
+    var targetId = link.getAttribute('href');
+    var section = targetId ? document.querySelector(targetId) : null;
+
+    if (!section) {
+      return;
+    }
+
+    sections.push({
+      id: targetId,
+      link: link,
+      section: section
+    });
+  });
+
+  if (!sections.length) {
+    return;
+  }
+
+  function setActiveSection(activeId) {
+    sections.forEach(function (item) {
+      if (item.id === activeId) {
+        item.link.setAttribute('aria-current', 'true');
+      } else {
+        item.link.removeAttribute('aria-current');
+      }
+    });
+  }
+
+  var ticking = false;
+
+  function updateActiveSection() {
+    var nav = document.querySelector('.nav');
+    var navOffset = nav ? nav.offsetHeight : 0;
+    var scrollAnchor = window.scrollY + navOffset + 32;
+    var activeId = sections[0].id;
+
+    sections.forEach(function (item) {
+      if (item.section.offsetTop <= scrollAnchor) {
+        activeId = item.id;
+      }
+    });
+
+    setActiveSection(activeId);
+    ticking = false;
+  }
+
+  function requestActiveSectionUpdate() {
+    if (ticking) {
+      return;
+    }
+
+    ticking = true;
+    window.requestAnimationFrame(updateActiveSection);
+  }
+
+  requestActiveSectionUpdate();
+  window.addEventListener('scroll', requestActiveSectionUpdate, { passive: true });
+  window.addEventListener('resize', requestActiveSectionUpdate);
 }
 
 function bindPublicationEntryDismiss(entries, setActivePublicationEntry) {

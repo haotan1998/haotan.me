@@ -45,6 +45,10 @@ JS handles: mobile hamburger toggle, scroll-spy for active nav link (`aria-curre
 
 `hugo.toml` — Site metadata, social links array (`params.social`), and profile info used by the hero section. Taxonomies are disabled.
 
+### Styling considerations
+
+When modifying CSS, consider that this website is viewed on both devices with a real mouse/trackpad and on touch devices. Use `@media (hover: hover)` to guard hover effects so they don't stick on touch screens.
+
 ### Deployment
 
 GitHub Actions (`.github/workflows/hugo.yml`): pushes to `main` trigger Hugo build and deploy to GitHub Pages. Hugo version pinned at 0.157.0 (extended).

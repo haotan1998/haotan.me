@@ -10,6 +10,12 @@
 
   --font-body: 'Source Serif 4', Georgia, serif;
   --font-display: 'Fraunces', Georgia, serif;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-display: clamp(1.6rem, 4vw, 2.25rem);
+  --text-hero: clamp(3rem, 8vw, 5rem);
 
   --max-width: 860px;
   --section-padding: 6rem 0;
@@ -100,7 +106,7 @@ a:hover {
 
 .nav__links a {
   position: relative;
-  font-size: 0.84rem;
+  font-size: var(--text-sm);
   font-weight: 400;
   color: var(--color-text-muted);
   letter-spacing: 0.04em;
@@ -215,7 +221,7 @@ a:hover {
 }
 
 .hero__eyebrow {
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -226,7 +232,7 @@ a:hover {
 
 .hero__name {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 8vw, 5rem);
+  font-size: var(--text-hero);
   font-weight: 300;
   line-height: 1.05;
   letter-spacing: -0.03em;
@@ -236,7 +242,7 @@ a:hover {
 
 .hero__subtitle {
   font-family: var(--font-body);
-  font-size: clamp(0.9375rem, 2vw, 1.1rem);
+  font-size: var(--text-base);
   font-weight: 400;
   color: var(--color-text-muted);
   line-height: 1.5;
@@ -245,7 +251,7 @@ a:hover {
 }
 
 .hero__tagline {
-  font-size: 0.9375rem;
+  font-size: var(--text-base);
   color: var(--color-text-muted);
   max-width: 480px;
   margin-bottom: 2.5rem;
@@ -263,7 +269,7 @@ a:hover {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  font-size: 0.84rem;
+  font-size: var(--text-sm);
   font-weight: 500;
   color: var(--color-text);
   padding: 0.5rem 1.1rem;
@@ -296,7 +302,7 @@ section+section {
 
 .section__title {
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+  font-size: var(--text-display);
   font-weight: 300;
   letter-spacing: -0.02em;
   line-height: 1.15;
@@ -308,7 +314,7 @@ section+section {
 .about__text p {
   color: var(--color-text-muted);
   margin-bottom: 1.25rem;
-  font-size: 1rem;
+  font-size: var(--text-base);
   line-height: 1.8;
 }
 
@@ -334,7 +340,7 @@ section+section {
 
 .research-group__marker {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: var(--text-base);
   font-weight: 500;
   color: var(--color-text-muted);
   line-height: 1.4;
@@ -383,7 +389,7 @@ section+section {
 }
 
 .pub-entry__award {
-  font-size: 0.65rem;
+  font-size: var(--text-xs);
   font-weight: 600;
   letter-spacing: 0.06em;
   color: var(--color-accent);
@@ -395,7 +401,7 @@ section+section {
 /* Title */
 .pub-entry__title {
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: var(--text-lg);
   font-weight: 500;
   line-height: 1.4;
   color: var(--color-text);
@@ -404,7 +410,7 @@ section+section {
 
 /* Authors */
 .pub-entry__authors {
-  font-size: 0.84rem;
+  font-size: var(--text-sm);
   color: var(--color-text-muted);
   line-height: 1.55;
   margin-bottom: 0.4rem;
@@ -417,7 +423,7 @@ section+section {
 
 /* Venue */
 .pub-entry__venue {
-  font-size: 0.84rem;
+  font-size: var(--text-sm);
   font-style: italic;
   color: var(--color-text-muted);
   line-height: 1.45;
@@ -435,7 +441,7 @@ section+section {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
-  font-size: 0.75rem;
+  font-size: var(--text-xs);
   font-weight: 500;
   letter-spacing: 0.03em;
   color: var(--color-text-muted);
@@ -465,7 +471,7 @@ section+section {
 
 .cv-group__marker {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: var(--text-base);
   font-weight: 500;
   color: var(--color-text-muted);
   line-height: 1.4;
@@ -483,7 +489,7 @@ section+section {
 /* Entry typography — no card */
 .cv-entry__title {
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: var(--text-lg);
   font-weight: 500;
   line-height: 1.4;
   color: var(--color-text);
@@ -491,7 +497,7 @@ section+section {
 }
 
 .cv-entry__subtitle {
-  font-size: 0.84rem;
+  font-size: var(--text-sm);
   color: var(--color-text-muted);
   line-height: 1.5;
   margin-bottom: 0.6rem;
@@ -507,7 +513,7 @@ section+section {
 }
 
 .cv-entry__body {
-  font-size: 0.9375rem;
+  font-size: var(--text-base);
   color: var(--color-text-muted);
   line-height: 1.7;
 }
@@ -533,7 +539,7 @@ section+section {
   .research-group__marker,
   .cv-group__marker {
     position: static;
-    font-size: 0.9rem;
+    font-size: var(--text-sm);
   }
 
   .pub-entry {
@@ -555,7 +561,7 @@ section+section {
 }
 
 .footer__copy {
-  font-size: 0.75rem;
+  font-size: var(--text-sm);
   font-weight: 400;
   letter-spacing: 0.03em;
   color: var(--color-text-muted);
@@ -625,7 +631,7 @@ section+section {
   .nav__links a {
     display: block;
     padding: 0.85rem 2rem;
-    font-size: 1rem;
+    font-size: var(--text-base);
   }
 
   .nav__links a::after {
@@ -688,7 +694,7 @@ section+section {
   }
 
   .nav__links a {
-    font-size: 1rem;
+    font-size: var(--text-base);
   }
 
   .hero__links {

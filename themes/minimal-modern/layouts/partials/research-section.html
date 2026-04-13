@@ -1,0 +1,45 @@
+{{- $section := .section -}}
+{{- $publications := .items -}}
+
+<section id="{{ $section.id }}">
+  <div class="container">
+    <h2 class="section__title">{{ $section.title }}</h2>
+
+    {{- range $group := $section.groups -}}
+      {{- $items := where $publications "type" $group.type -}}
+      {{- if gt (len $items) 0 -}}
+      <div class="research-group">
+        <div class="research-group__marker">{{ $group.label }}</div>
+        <div class="research-group__entries">
+          {{- range $items -}}
+          <article class="pub-entry">
+            {{- if .award -}}
+            <div class="pub-entry__meta">
+              <span class="pub-entry__award">{{ .award }}</span>
+            </div>
+            {{- end -}}
+            <h3 class="pub-entry__title">{{ .title }}</h3>
+            <p class="pub-entry__authors">{{ .authors | safeHTML }}</p>
+            <p class="pub-entry__venue">{{ .venue }}, {{ .year }}</p>
+            <div class="pub-entry__actions">
+              {{- if .paper_url -}}
+              <a href="{{ .paper_url }}" class="pub-action" target="_blank" rel="noopener">
+                {{ partial "icon.html" (dict "name" "paper" "size" 14) }}
+                <span>Paper</span>
+              </a>
+              {{- end -}}
+              {{- if .code_url -}}
+              <a href="{{ .code_url }}" class="pub-action" target="_blank" rel="noopener">
+                {{ partial "icon.html" (dict "name" "code" "size" 14) }}
+                <span>Code</span>
+              </a>
+              {{- end -}}
+            </div>
+          </article>
+          {{- end -}}
+        </div>
+      </div>
+      {{- end -}}
+    {{- end -}}
+  </div>
+</section>

@@ -1,0 +1,11 @@
+{{- $page := .page -}}
+{{- $section := .section -}}
+
+<section id="{{ $section.id }}">
+  <div class="container">
+    <h2 class="section__title">{{ $section.title }}</h2>
+    <div class="about__text">
+      {{ $page.Content }}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,28 @@
+{{- $section := .section -}}
+{{- $items := .items -}}
+{{- $headlineKey := $section.headline_key -}}
+
+<section id="{{ $section.id }}">
+  <div class="container">
+    <h2 class="section__title">{{ $section.title }}</h2>
+    {{- range $items -}}
+    <div class="cv-group">
+      <div class="cv-group__marker">{{ .period }}</div>
+      <div class="cv-group__content">
+        <h3 class="cv-entry__title">{{ index . $headlineKey }}</h3>
+        <p class="cv-entry__subtitle">
+          {{- if .org_url -}}
+          <a href="{{ .org_url }}" target="_blank" rel="noopener">{{ .organization }}</a>
+          {{- else -}}
+          {{ .organization }}
+          {{- end -}}
+          {{- if .location }}, {{ .location }}{{ end -}}
+        </p>
+        {{- with .description -}}
+        <div class="cv-entry__body">{{ . | markdownify }}</div>
+        {{- end -}}
+      </div>
+    </div>
+    {{- end -}}
+  </div>
+</section>

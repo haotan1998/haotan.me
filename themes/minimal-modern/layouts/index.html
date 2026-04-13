@@ -1,6 +1,7 @@
 {{ define "main" }}
+{{ $page := . }}
+{{ $sections := .Site.Data.home }}
 
-<!-- ===== Hero ===== -->
 <section class="hero">
   <div class="container">
     <div class="hero__grid">
@@ -22,94 +23,16 @@
   </div>
 </section>
 
-<!-- ===== About ===== -->
-<section id="about">
-  <div class="container">
-    <h2 class="section__title">About</h2>
-    <div class="about__text">
-      {{ .Content }}
-    </div>
-  </div>
-</section>
-
-<!-- ===== Research ===== -->
-<section id="research">
-  <div class="container">
-    <h2 class="section__title">Research</h2>
-
-    {{ $pubs := .Site.Data.publications }}
-    {{ $typeLabels := dict "journal" "Journal Articles" "conference" "Conference Papers" "patent" "Patents" }}
-    {{ $typeOrder := slice "journal" "conference" "patent" }}
-
-    {{ range $type := $typeOrder }}
-    {{ $items := where $pubs "type" $type }}
-    {{ if gt (len $items) 0 }}
-    <div class="research-group">
-      <div class="research-group__marker">{{ index $typeLabels $type }}</div>
-      <div class="research-group__entries">
-        {{ range $items }}
-        <article class="pub-entry">
-          {{ if .award }}<div class="pub-entry__meta"><span class="pub-entry__award">{{ .award }}</span></div>{{ end }}
-          <h3 class="pub-entry__title">{{ .title }}</h3>
-          <p class="pub-entry__authors">{{ .authors | safeHTML }}</p>
-          <p class="pub-entry__venue">{{ .venue }}, {{ .year }}</p>
-          <div class="pub-entry__actions">
-            {{ if .paper_url }}
-            <a href="{{ .paper_url }}" class="pub-action" target="_blank" rel="noopener">
-              {{ partial "icon.html" (dict "name" "paper" "size" 14) }}
-              <span>Paper</span>
-            </a>
-            {{ end }}
-            {{ if .code_url }}
-            <a href="{{ .code_url }}" class="pub-action" target="_blank" rel="noopener">
-              {{ partial "icon.html" (dict "name" "code" "size" 14) }}
-              <span>Code</span>
-            </a>
-            {{ end }}
-          </div>
-        </article>
-        {{ end }}
-      </div>
-    </div>
-    {{ end }}
-    {{ end }}
-  </div>
-</section>
-
-<!-- ===== Experience ===== -->
-<section id="experience">
-  <div class="container">
-    <h2 class="section__title">Experience</h2>
-    {{ range .Site.Data.experience }}
-    <div class="cv-group">
-      <div class="cv-group__marker">{{ .period }}</div>
-      <div class="cv-group__content">
-        <h3 class="cv-entry__title">{{ .role }}</h3>
-        <p class="cv-entry__subtitle"><a href="{{ .org_url }}" target="_blank" rel="noopener">{{ .organization }}</a>,
-          {{ .location }}</p>
-        <p class="cv-entry__body">{{ .description | markdownify }}</p>
-      </div>
-    </div>
-    {{ end }}
-  </div>
-</section>
-
-<!-- ===== Education ===== -->
-<section id="education">
-  <div class="container">
-    <h2 class="section__title">Education</h2>
-    {{ range .Site.Data.education }}
-    <div class="cv-group">
-      <div class="cv-group__marker">{{ .period }}</div>
-      <div class="cv-group__content">
-        <h3 class="cv-entry__title">{{ .degree }}</h3>
-        <p class="cv-entry__subtitle">{{ if .org_url }}<a href="{{ .org_url }}" target="_blank" rel="noopener">{{
-            .organization }}</a>{{ else }}{{ .organization }}{{ end }}{{ if .location }}, {{ .location }}{{ end }}</p>
-        {{ if .description }}<p class="cv-entry__body">{{ .description | markdownify }}</p>{{ end }}
-      </div>
-    </div>
-    {{ end }}
-  </div>
-</section>
+{{ range $section := $sections }}
+  {{ $items := slice }}
+  {{ with $section.collection }}
+    {{ $items = index $page.Site.Data . }}
+  {{ end }}
+  {{ partial $section.partial (dict
+    "page" $page
+    "section" $section
+    "items" $items
+  ) }}
+{{ end }}
 
 {{ end }}

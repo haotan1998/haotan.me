@@ -491,6 +491,14 @@ section + section {
   line-height: 1.75;
 }
 
+.cv-entry__body p {
+  margin: 0;
+}
+
+.cv-entry__body p + p {
+  margin-top: 0.75rem;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .research-group,

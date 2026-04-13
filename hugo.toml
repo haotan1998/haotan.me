@@ -2,6 +2,7 @@ baseURL = 'https://haotan.me/'
 languageCode = 'en-us'
 title = 'Hao Tan'
 theme = 'minimal-modern'
+disableKinds = ['taxonomy', 'term']
 
 [params]
   name = "Hao Tan"
@@ -12,23 +13,6 @@ theme = 'minimal-modern'
   description = "PhD Candidate at the University of Leeds researching deep model fusion and multi-task learning."
   tagline = "I like to connect intelligent systems across disciplines."
   profilePhoto = "/profile.jpg"
-
-# Navigation menu
-[[params.nav]]
-  label = "About"
-  url = "#about"
-
-[[params.nav]]
-  label = "Research"
-  url = "#research"
-
-[[params.nav]]
-  label = "Experience"
-  url = "#experience"
-
-[[params.nav]]
-  label = "Education"
-  url = "#education"
 
 # Social links
 [[params.social]]

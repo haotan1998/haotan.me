@@ -153,13 +153,15 @@ a:hover {
   transform: scaleX(1);
 }
 
-.nav__links a:hover {
-  color: var(--color-text);
-}
+@media (hover: hover) {
+  .nav__links a:hover {
+    color: var(--color-text);
+  }
 
-.nav__links a:hover::after {
-  opacity: 0.5;
-  transform: scaleX(1);
+  .nav__links a:hover::after {
+    opacity: 0.5;
+    transform: scaleX(1);
+  }
 }
 
 .nav__toggle {
@@ -177,8 +179,10 @@ a:hover {
   transition: background 0.2s;
 }
 
-.nav__toggle:hover {
-  background: var(--color-surface);
+@media (hover: hover) {
+  .nav__toggle:hover {
+    background: var(--color-surface);
+  }
 }
 
 .nav__toggle span {

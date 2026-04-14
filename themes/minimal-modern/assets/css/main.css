@@ -73,8 +73,10 @@ a {
   transition: border-color 0.2s ease;
 }
 
-a:hover {
-  border-bottom-color: var(--color-accent);
+@media (hover: hover) {
+  a:hover {
+    border-bottom-color: var(--color-accent);
+  }
 }
 
 /* ===== Container ===== */

@@ -2,7 +2,6 @@
   org_url: ""
   location: "Leeds, UK"
   degree: "Doctor of Philosophy"
-  field: "Computer Science"
   period: "Oct 2021 – Jul 2026 (expected)"
   description: "I am under the supervision of [Dr. Nabi Omidvar](https://business.leeds.ac.uk/faculty/staff/1025/dr-nabi-omidvar) and [Prof. Netta Cohen](https://eps.leeds.ac.uk/staff/301/professor_netta_cohen). My research interests include deep model fusion and multi-task learning."
 
@@ -10,7 +9,6 @@
   org_url: ""
   location: "Shenzhen, China"
   degree: "Bachelor of Engineering"
-  field: "Computer Science and Technology"
   period: "Sep 2016 – Jun 2020"
   thesis: "Neural Architecture Search Based on Differential Evolution"
   description: "My major is Computer Science and Technology. This is where I first got into deep learning and doing projects related to neural architecture search with evolutionary algorithms."

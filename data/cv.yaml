@@ -1,0 +1,23 @@
+- id: "experience"
+  title: "Experience"
+  partial: "cv-section.html"
+  collection: "experience"
+  headline_key: "role"
+
+- id: "education"
+  title: "Education"
+  partial: "cv-section.html"
+  collection: "education"
+  headline_key: "degree"
+
+- id: "research"
+  title: "Research"
+  partial: "research-section.html"
+  collection: "publications"
+  groups:
+    - type: "journal"
+      label: "Journal Articles"
+    - type: "conference"
+      label: "Conference Papers"
+    - type: "patent"
+      label: "Patents"

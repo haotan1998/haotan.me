@@ -1,6 +1,7 @@
 ---
 title: "Hello World"
 date: 2026-04-14
+# draft: true
 summary: "A first post to kick off the blog — sharing thoughts on research, technology, and everything in between."
 ---
 

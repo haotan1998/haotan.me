@@ -30,24 +30,17 @@
 </head>
 
 <body>
-  {{ $sections := .Site.Data.home }}
-
   <!-- Navigation -->
   <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="container">
-      <a href="/" class="nav__logo"><img src="{{ "logo.svg" | relURL }}" alt="{{ .Site.Params.chineseName }}" /></a>
+      <a href="/" class="nav__logo" aria-label="Home{{ if .IsHome }}, current page{{ end }}"{{ if .IsHome }} aria-current="page"{{ end }}><img src="{{ "logo.svg" | relURL }}" alt="{{ .Site.Params.chineseName }}" /></a>
       <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
       <ul class="nav__links">
-        {{ if .IsHome }}
-          {{ range where $sections "include_in_nav" true }}
-          <li><a href="#{{ .id }}">{{ .title }}</a></li>
-          {{ end }}
-        {{ else }}
-          <li><a href="/">Home</a></li>
-        {{ end }}
-        <li><a href="{{ "blog/" | relURL }}"{{ if or (.IsSection) (.IsPage) }}{{ if eq (.Section) "blog" }} aria-current="true"{{ end }}{{ end }}>Blog</a></li>
+        <li><a href="{{ "cv/" | relURL }}"{{ if and (or .IsSection .IsPage) (eq .Section "cv") }} aria-current="true"{{ end }}>CV</a></li>
+        <li><a href="{{ "projects/" | relURL }}"{{ if and (or .IsSection .IsPage) (eq .Section "projects") }} aria-current="true"{{ end }}>Projects</a></li>
+        <li><a href="{{ "blog/" | relURL }}"{{ if and (or .IsSection .IsPage) (eq .Section "blog") }} aria-current="true"{{ end }}>Blog</a></li>
       </ul>
     </div>
   </nav>

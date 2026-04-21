@@ -1,0 +1,46 @@
+{{ define "main" }}
+<article class="project-page">
+  <div class="container">
+    <a href="{{ "projects/" | relURL }}" class="project-page__back">&larr; Back to projects</a>
+    <header class="project-page__header">
+      <div class="project-page__meta">
+        <time class="project-page__year" datetime="{{ .Date.Format "2006" }}">{{ .Date.Format "2006" }}</time>
+        {{ with .Params.status }}
+        <span class="project-page__status">{{ . }}</span>
+        {{ end }}
+      </div>
+      <h1 class="project-page__title">{{ .Title }}</h1>
+      {{ with .Params.summary }}
+      <p class="project-page__lede">{{ . }}</p>
+      {{ end }}
+      {{ with .Params.links }}
+      <div class="project-page__links">
+        {{ range . }}
+        <a href="{{ .url }}" class="project-page__link" {{ if not (strings.HasPrefix .url "/") }}target="_blank" rel="noopener"{{ end }}>
+          {{ with .icon }}{{ partial "icon.html" (dict "name" . "size" 14) }}{{ end }}
+          <span>{{ .label }}</span>
+        </a>
+        {{ end }}
+      </div>
+      {{ end }}
+    </header>
+    <div class="project-page__content">
+      {{ .Content }}
+    </div>
+    <footer class="project-page__footer">
+      {{ with .Params.tags }}
+      <ul class="project-page__tags">
+        {{ range . }}
+        <li>{{ . }}</li>
+        {{ end }}
+      </ul>
+      {{ end }}
+      {{ if ne (.Lastmod.Format "2006-01-02") (.Date.Format "2006-01-02") }}
+      <p class="project-page__lastmod">
+        Last updated on <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "Jan 2, 2006" }}</time>
+      </p>
+      {{ end }}
+    </footer>
+  </div>
+</article>
+{{ end }}

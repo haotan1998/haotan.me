@@ -1,0 +1,21 @@
+{{ define "main" }}
+{{ $page := . }}
+
+<section class="cv-page-header">
+  <div class="container">
+    <h1 class="section__title">{{ .Title }}</h1>
+  </div>
+</section>
+
+{{ range $section := .Site.Data.cv }}
+  {{ $items := slice }}
+  {{ with $section.collection }}
+    {{ $items = index $page.Site.Data . }}
+  {{ end }}
+  {{ partial $section.partial (dict
+    "page" $page
+    "section" $section
+    "items" $items
+  ) }}
+{{ end }}
+{{ end }}

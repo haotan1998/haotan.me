@@ -1,0 +1,42 @@
+{{ define "main" }}
+<section class="projects-header">
+  <div class="container">
+    <h1 class="section__title">{{ .Title }}</h1>
+  </div>
+</section>
+
+<section class="projects-list">
+  <div class="container">
+    {{ $projects := .Pages.ByDate.Reverse }}
+    {{ if $projects }}
+    <div class="project-cards">
+      {{ range $projects }}
+      <a href="{{ .RelPermalink }}" class="project-card">
+        <div class="project-card__meta">
+          <time class="project-card__year" datetime="{{ .Date.Format "2006" }}">{{ .Date.Format "2006" }}</time>
+          {{ with .Params.status }}
+          <span class="project-card__status">{{ . }}</span>
+          {{ end }}
+        </div>
+        <h2 class="project-card__title">{{ .Title }}</h2>
+        {{ with .Params.summary }}
+        <p class="project-card__excerpt">{{ . }}</p>
+        {{ else }}
+        <p class="project-card__excerpt">{{ .Summary | plainify | truncate 160 }}</p>
+        {{ end }}
+        {{ with .Params.tags }}
+        <ul class="project-card__tags">
+          {{ range . }}
+          <li>{{ . }}</li>
+          {{ end }}
+        </ul>
+        {{ end }}
+      </a>
+      {{ end }}
+    </div>
+    {{ else }}
+    <p class="projects-list__empty">No projects yet.</p>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
